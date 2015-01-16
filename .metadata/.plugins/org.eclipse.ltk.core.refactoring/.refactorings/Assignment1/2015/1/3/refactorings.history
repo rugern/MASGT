@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;p2&apos; in &apos;Tournament.payoff(...)&apos; to &apos;otherPlay&apos;&#x0D;&#x0A;- Original project: &apos;Assignment1&apos;&#x0D;&#x0A;- Original element: &apos;Tournament.payoff(Action, Action).p2&apos;&#x0D;&#x0A;- Renamed element: &apos;p2&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;p2&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Tournament.java[Tournament~payoff~QAction;~QAction;@p2!1168!1176!1175!1176!QAction;!0!true" name="otherPlay" references="true" stamp="1421417363895" version="1.0"/>
+</session>

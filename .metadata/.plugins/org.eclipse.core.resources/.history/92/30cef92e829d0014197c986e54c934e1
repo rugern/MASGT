@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+
+public class TitForTat implements Agent {
+
+	private ArrayList<Action> previousActions = new ArrayList<Action>();
+	private HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+	
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		Action action = Action.COOPERATE;
+		if(opponentPreviousActions.size() > 0) {
+			action = opponentPreviousActions.get(opponentPreviousActions.size() - 1);
+		}
+		previousActions.add(action);
+		return action;
+	}
+
+	public ArrayList<Action> getPreviousActions() {
+		return previousActions;
+	}
+
+	public void setPreviousActions(ArrayList<Action> previousActions) {
+		this.previousActions = previousActions;
+	}
+
+	public HashMap<Agent, Integer> getMatchScore() {
+		return matchScore;
+	}
+
+	public void setMatchScore(HashMap<Agent, Integer> matchScore) {
+		this.matchScore = matchScore;
+	}
+}

@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+
+public class Player implements Agent {
+	
+	protected ArrayList<Action> previousActions = new ArrayList<Action>();
+	protected HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+	protected ArrayList<Integer> numbers = new ArrayList<Integer>();
+	
+	public ArrayList<Action> getPreviousActions() {
+		return previousActions;
+	}
+
+	public void setPreviousActions(ArrayList<Action> previousActions) {
+		this.previousActions = previousActions;
+	}
+
+	public HashMap<Agent, Integer> getMatchScore() {
+		return matchScore;
+	}
+
+	public void setMatchScore(HashMap<Agent, Integer> matchScore) {
+		this.matchScore = matchScore;
+	}
+	
+	public void initializeScoreHashMap(ArrayList<Agent> players) {
+		
+	}
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void addNumber(int number) {
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+
+public class MixtureStrategy implements Agent {
+	
+	private ArrayList<Action> previousActions = new ArrayList<Action>();
+	private HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		
+	}
+
+}

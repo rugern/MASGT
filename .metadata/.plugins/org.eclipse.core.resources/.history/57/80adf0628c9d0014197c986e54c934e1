@@ -1,0 +1,10 @@
+import java.util.List;
+
+
+public class AlwaysDefect extends Player {
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		return Action.DEFECT;
+	}
+}

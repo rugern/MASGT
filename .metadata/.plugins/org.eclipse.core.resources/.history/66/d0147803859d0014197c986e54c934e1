@@ -1,0 +1,19 @@
+import java.util.List;
+
+
+public class TitForTat extends Player {
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		Action action = Action.COOPERATE;
+		if(opponentPreviousActions.size() > 0) {
+			action = opponentPreviousActions.get(opponentPreviousActions.size() - 1);
+		}
+		previousActions.add(action);
+		return action;
+	}
+	
+	public void initializePlayer(int number) {
+		addNumber(number);
+	}
+}

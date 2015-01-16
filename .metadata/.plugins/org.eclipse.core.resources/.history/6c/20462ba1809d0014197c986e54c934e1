@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import Agent.Action;
+
+
+public class TitForEveryOtherTat implements Agent {
+	
+	private ArrayList<Action> previousActions = new ArrayList<Action>();
+	private HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		Action action = Action.COOPERATE;
+		int size = opponentPreviousActions.size();
+		if(size > 1) {
+			if(opponentPreviousActions.get(size-1)==Action.DEFECT && opponentPreviousActions.get(size-2)==Action.DEFECT) {
+				action = Action.DEFECT;
+			}
+		}
+		previousActions.add(action);
+		return action;
+	}
+
+}

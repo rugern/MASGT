@@ -1,0 +1,12 @@
+import java.util.List;
+
+
+public class AlwaysCooperate extends Player {
+	
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		previousActions.add(Action.COOPERATE);
+		return Action.COOPERATE;
+	}
+
+}

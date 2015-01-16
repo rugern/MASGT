@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+
+public class Player implements Agent {
+	
+	protected ArrayList<Action> previousActions = new ArrayList<Action>();
+	protected HashMap<Player, Integer> matchScore = new HashMap<Player, Integer>();
+	private String name;
+	
+	public Player(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		// TODO Auto-generated method stub
+		System.out.println("Skulle ikke kommet hit");
+		return null;
+	}
+	
+	/**
+	 * Add all players to compete against and initial match score of 0
+	 * @param players
+	 */
+	public void initializeScoreHashMap(ArrayList<Player> players) {
+		for(Player p:players) {
+			//If not this player, add the player to matches
+			if(!p.equals(this)) {
+				matchScore.put(p, 0);
+			}
+		}
+	}
+	
+	public ArrayList<Action> getPreviousActions() {
+		return previousActions;
+	}
+
+	public void addActionPerformed(Action action) {
+		previousActions.add(action);
+	}
+
+	public HashMap<Player, Integer> getMatchScore() {
+		return matchScore;
+	}
+	
+	public void resetPreviousActions() {
+		previousActions = new ArrayList<Action>();
+	}
+	
+	public void printFinalScore() {
+		int sum = 0;
+		int n = 0;
+		for(Player p: matchScore.keySet()) {
+			sum += matchScore.get(p);
+			n++;
+		}
+		System.out.println(name);
+		System.out.println(sum/matchScore.size());
+	}
+}
