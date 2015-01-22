@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+
+public class TitForEveryOtherTat extends Player {
+	
+	private ArrayList<Action> previousActions = new ArrayList<Action>();
+	private HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		Action action = Action.COOPERATE;
+		int size = opponentPreviousActions.size();
+		if(size > 1) {
+			if(opponentPreviousActions.get(size-1)==Action.DEFECT && opponentPreviousActions.get(size-2)==Action.DEFECT) {
+				action = Action.DEFECT;
+			}
+		}
+		previousActions.add(action);
+		return action;
+	}
+	
+	public ArrayList<Action> getPreviousActions() {
+		return previousActions;
+	}
+
+	public void setPreviousActions(ArrayList<Action> previousActions) {
+		this.previousActions = previousActions;
+	}
+
+	public HashMap<Agent, Integer> getMatchScore() {
+		return matchScore;
+	}
+
+	public void setMatchScore(HashMap<Agent, Integer> matchScore) {
+		this.matchScore = matchScore;
+	}
+}

@@ -1,0 +1,19 @@
+import java.util.List;
+
+
+public class TitForTat extends Player {
+	
+	public TitForTat(String name) {
+		super(name);
+	}
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		Action action = Action.COOPERATE;
+		if(opponentPreviousActions.size() > 0) {
+			action = opponentPreviousActions.get(opponentPreviousActions.size() - 1);
+			System.out.println(Action.COOPERATE);
+		}
+		return action;
+	}
+}

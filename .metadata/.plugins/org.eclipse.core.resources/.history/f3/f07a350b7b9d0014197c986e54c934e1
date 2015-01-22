@@ -1,0 +1,5 @@
+
+public class AlwaysDefect implements Agent {
+
+	
+}

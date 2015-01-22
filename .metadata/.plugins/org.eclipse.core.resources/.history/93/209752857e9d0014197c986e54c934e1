@@ -1,0 +1,10 @@
+import java.util.ArrayList;
+
+import Agent.Action;
+
+
+public class OwnStrategy implements Agent {
+	
+	public ArrayList<Action> previousActions = new ArrayList<Action>();
+
+}

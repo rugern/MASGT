@@ -1,0 +1,16 @@
+import java.util.List;
+
+
+public class AlwaysDefect extends Player {
+	
+	private String name = "Defect";
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		return Action.DEFECT;
+	}
+	
+	public void getName() {
+		return name;
+	}
+}

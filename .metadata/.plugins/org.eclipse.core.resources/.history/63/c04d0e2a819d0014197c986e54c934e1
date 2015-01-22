@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import Agent.Action;
+
+
+public class AlwaysCooperate implements Agent {
+	
+	private ArrayList<Action> previousActions = new ArrayList<Action>();
+	private HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+    
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		previousActions.add(Action.COOPERATE);
+		return Action.COOPERATE;
+	}
+
+	
+}

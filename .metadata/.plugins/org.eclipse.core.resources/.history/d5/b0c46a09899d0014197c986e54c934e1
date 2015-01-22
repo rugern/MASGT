@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Tournament implements Agent {
+	
+	private ArrayList<Player> players = new ArrayList<Player>();
+	private static int numberOfRounds;
+	
+	public Tournament() {
+		players.add(new AlwaysCooperate());
+		players.add(new AlwaysDefect());
+		players.add(new TitForTat());
+		players.add(new TitForEveryOtherTat());
+		
+		initializeHashMapsWithPlayers();
+		playTournament();
+	}
+	
+	/**
+	 * Send all players to each player for match score initialization
+	 */
+	public void initializeHashMapsWithPlayers() {
+		for(Player a: players) {
+			a.initializeScoreHashMap(players);
+		}
+	}
+	
+	/**
+	 * Play each player against all other players a numberOfRounds number of rounds
+	 */
+	public void playTournament() {
+		for(int i=0; i<players.size()-1; i++) {
+			for(int j=i+1; j<players.size(); j++) {
+				Player p1 = players.get(i);
+				Player p2 = players.get(j);
+				for(int k=0; k<numberOfRounds; k++) {
+					Action p1Action = p1.dilemma(p2.getPreviousActions());
+					Action p2Action = p2.dilemma(p1.getPreviousActions());
+					
+				}
+			}
+		}
+	}
+	
+	public Pair<Integer, Integer> payoff(Action p1, Action p2) {
+		if(p1==Action.COOPERATE && p2==Action.COOPERATE) {
+			
+		}
+		else if(p1==Action.COOPERATE && p2==Action.DEFECT) {
+			
+		}
+		else if(p1==Action.DEFECT && p2==Action.COOPERATE) {
+			
+		}
+		else if(p1==Action.DEFECT && p2==Action.DEFECT) {
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		numberOfRounds = Integer.parseInt(args[0]);
+		new Tournament();
+	}
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

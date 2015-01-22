@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+
+public class Tournament {
+	
+	private ArrayList<Agent> players = new ArrayList<Agent>();
+	
+	public Tournament() {
+		players.add(new AlwaysCooperate());
+		players.add(new AlwaysDefect());
+		players.add(new TitForTat());
+		players.add(new TitForEveryOtherTat());
+		
+		
+	}
+	
+	public void initializeHashMapsWithPlayers() {
+		for(Agent a: players) {
+			
+		}
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		new Tournament();
+	}
+
+}

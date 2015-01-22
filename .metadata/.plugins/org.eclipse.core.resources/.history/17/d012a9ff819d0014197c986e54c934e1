@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import Agent.Action;
+
+
+public class Player {
+	
+	private ArrayList<Action> previousActions = new ArrayList<Action>();
+	private HashMap<Agent, Integer> matchScore = new HashMap<Agent, Integer>();
+
+}

@@ -8,6 +8,7 @@ public interface Agent {
      * Possible choices in the prisoner's dilemma
      */
     public enum Action {COOPERATE, DEFECT}
+    
 
     /***
      * Choose an action based on the opponent's previous actions

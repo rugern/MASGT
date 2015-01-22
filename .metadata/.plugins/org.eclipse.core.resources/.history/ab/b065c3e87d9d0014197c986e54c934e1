@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class TitForEveryOtherTat implements Agent {
+	
+	public ArrayList<Action> previousActions = new ArrayList<Action>();
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		Action action;
+		int size = opponentPreviousActions.size();
+		if(size > 1) {
+			if(opponentPreviousActions.get(size-1)==Action.DEFECT && opponentPreviousActions.get(size-2)==Action.DEFECT) {
+				previousActions.add(Action.DEFECT);
+				return Action.DEFECT;
+			}
+		}
+		previousActions.add(Action.COOPERATE);
+		return Action.COOPERATE;
+	}
+
+}

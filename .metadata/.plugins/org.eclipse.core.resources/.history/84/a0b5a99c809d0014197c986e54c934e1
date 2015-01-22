@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class AlwaysDefect implements Agent {
+
+	public ArrayList<Action> previousActions = new ArrayList<Action>();
+	
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		previousActions.add(Action.DEFECT);
+		return Action.DEFECT;
+	}
+
+	
+}

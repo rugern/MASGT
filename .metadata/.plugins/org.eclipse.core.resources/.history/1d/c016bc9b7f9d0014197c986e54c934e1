@@ -1,0 +1,14 @@
+
+public class Tournament {
+	
+	public Tournament() {
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		new Tournament();
+	}
+
+}
