@@ -22,12 +22,19 @@ public class NewStrategy extends Player{
             }
             if (opponenthasCOOperated){
                 if (opponentPreviousActions.get(history -1).equals(Action.DEFECT)){
-                    if (Math.random()>0.11){
-                        action = Action.DEFECT;
-                    }
+                    if(Math.random()>0.1)
+                        return Action.DEFECT;
                 }
-            }else {
-                action = Action.DEFECT;
+            }else{
+                if (history<4) {
+                    if (Math.random() > 0.3)
+                        return Action.DEFECT;
+                }else if (history<8){
+                    if (Math.random()>0.1)
+                        return Action.DEFECT;
+                }else{
+                    return Action.DEFECT;
+                }
             }
         }
         return action;
