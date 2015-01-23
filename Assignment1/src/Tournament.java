@@ -8,13 +8,32 @@ public class Tournament implements Agent {
 	private static int numberOfRounds;
 	
 	public Tournament() {
+		players.add(new oldStrategy("oldStrategy"));
 		players.add(new AlwaysCooperate("AlwaysCooperate"));
 		players.add(new AlwaysDefect("AlwaysDefect"));
 		players.add(new TitForTat("TitForTat"));
 		players.add(new TitForEveryOtherTat("TitForEveryOtherTat"));
 		players.add(new MixtureStrategy("MixtureStrategy"));
 		players.add(new KallDenNoe("KallDenNoe"));
-		
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new KallDenNoe("KallDenNoe"));
+		players.add(new NewStrategy("NewStrategy"));
+		players.add(new NewStrategy2("New2"));
+
+
 		initializeHashMapsWithPlayers();
 		playTournament();
 		printScores();
@@ -85,7 +104,7 @@ public class Tournament implements Agent {
 	}
 	
 	public static void main(String[] args) {
-		numberOfRounds = Integer.parseInt(args[0]);
+		numberOfRounds = 1000;
 		new Tournament();
 	}
 
