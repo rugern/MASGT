@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Tournament implements Agent {
+	
+	private ArrayList<Player> players = new ArrayList<Player>();
+	private static int numberOfRounds;
+	
+	public Tournament() {
+		players.add(new AlwaysCooperate("AlwaysCooperate"));
+		players.add(new AlwaysDefect("AlwaysDefect"));
+		players.add(new TitForTat("TitForTat"));
+		players.add(new TitForEveryOtherTat("TitForEveryOtherTat"));
+		
+		initializeHashMapsWithPlayers();
+		playTournament();
+		printScores();
+	}
+	
+	/**
+	 * Send all players to each player for match score initialization
+	 */
+	public void initializeHashMapsWithPlayers() {
+		for(Player a: players) {
+			a.initializeScoreHashMap(players);
+		}
+	}
+	
+	/**
+	 * Play each player against all other players a numberOfRounds number of rounds
+	 */
+	public void playTournament() {
+		for(int i=0; i<players.size()-1; i++) {
+			for(int j=i+1; j<players.size(); j++) {
+				Player p1 = players.get(i);
+				Player p2 = players.get(j);
+				for(int k=0; k<numberOfRounds; k++) {
+					Action p1Action = p1.dilemma(p2.getPreviousActions());
+					Action p2Action = p2.dilemma(p1.getPreviousActions());
+					
+					//Calculate payoffs, update score and remember action performed for next round
+					int p1score = payoff(p1Action, p2Action) + p1.getMatchScore().get(p2);
+					p1.getMatchScore().put(p2, p1score);
+					p1.addActionPerformed(p1Action);
+					
+					int p2score = payoff(p2Action, p1Action) + p2.getMatchScore().get(p1);
+					p2.getMatchScore().put(p1, p2score);
+					p2.addActionPerformed(p2Action);					
+					if(p1 instanceof AlwaysDefect && p2 instanceof TitForTat) {
+						System.out.println(p1score);
+						System.out.println(p2score);
+					}
+				}
+				//Reset previousActions before next player
+				p1.resetPreviousActions();
+				p2.resetPreviousActions();
+			}
+		}
+	}
+	
+	/**
+	 * Our payoff "matrix". Returns the utility for myPlay given the actions provided
+	 * @param myPlay
+	 * @param otherPlay
+	 * @return
+	 */
+	public int payoff(Action myPlay, Action otherPlay) {
+		if(myPlay==Action.COOPERATE && otherPlay==Action.COOPERATE) {
+			return 3;
+		}
+		else if(myPlay==Action.COOPERATE && otherPlay==Action.DEFECT) {
+			return 0;
+		}
+		else if(myPlay==Action.DEFECT && otherPlay==Action.COOPERATE) {
+			return 5;
+		}
+		else {
+			return 2;
+		}
+	}
+	
+	public void printScores() {
+		for(Player p: players) {
+			p.printFinalScore();
+		}
+	}
+	
+	public static void main(String[] args) {
+		numberOfRounds = Integer.parseInt(args[0]);
+		new Tournament();
+	}
+
+	@Override
+	public Action dilemma(List<Action> opponentPreviousActions) {
+		// TODO Auto-generated method stub
+		System.out.println("Skulle ikke kommet hit");
+		return null;
+	}
+
+}
